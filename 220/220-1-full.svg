@@ -1,0 +1,974 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" ><svg xmlns="http://www.w3.org/2000/svg" width="3600" height="900" style="background:black">
+<style>text{font:12px Arial;fill:#CDCDCD;-webkit-user-select:none;user-select:none}.bpm_mark{fill:#15CD15}</style>
+<defs>
+  <linearGradient id="line_hold_gradient"><stop offset="0%" stop-color="rgba(155,255,255,0.9)" /><stop offset="30%" stop-color="rgba(119,200,200,0.6)" /><stop offset="70%" stop-color="rgba(119,200,200,0.6)" /><stop offset="100%" stop-color="rgba(155,255,255,0.9)" /></linearGradient>
+  <linearGradient id="line_scratch_gradient"><stop offset="0%" stop-color="rgba(228,128,255,0.9)" /><stop offset="30%" stop-color="rgba(151,83,215,0.6)" /><stop offset="70%" stop-color="rgba(151,83,215,0.6)" /><stop offset="100%" stop-color="rgba(228,128,255,0.9)" /></linearGradient>
+  <g width="20" height="8" id="normal"  ><path d="M0,2v4a2,2,90,0,0,2,2h16a2,-2,90,0,0,2,-2v-4a-2,-2,90,0,0,-2,-2h-16a-2,2,90,0,0,-2,2" fill="rgb(253,98,163)" /><path d="M1,3v2a2,2,90,0,0,2,2h14a2,-2,90,0,0,2,-2v-2a-2,-2,90,0,0,-2,-2h-14a-2,2,90,0,0,-2,2" stroke="rgb(255,225,104)" fill="transparent" /></g>
+  <g width="20" height="8" id="critical"><path d="M0,2v4a2,2,90,0,0,2,2h16a2,-2,90,0,0,2,-2v-4a-2,-2,90,0,0,-2,-2h-16a-2,2,90,0,0,-2,2" fill="rgb(254,166,43)" /><path d="M1,3v2a2,2,90,0,0,2,2h14a2,-2,90,0,0,2,-2v-2a-2,-2,90,0,0,-2,-2h-14a-2,2,90,0,0,-2,2" stroke="rgb(255,225,104)" fill="transparent" /></g>
+  <g width="20" height="8" id="hold"    ><path d="M0,2v4a2,2,90,0,0,2,2h16a2,-2,90,0,0,2,-2v-4a-2,-2,90,0,0,-2,-2h-16a-2,2,90,0,0,-2,2" fill="rgb(18,155,250)" /><path d="M1,3v2a2,2,90,0,0,2,2h14a2,-2,90,0,0,2,-2v-2a-2,-2,90,0,0,-2,-2h-14a-2,2,90,0,0,-2,2" stroke="rgb(255,225,104)" fill="transparent" /></g>
+  <g width="20" height="8" id="scratch" ><path d="M0,2v4a2,2,90,0,0,2,2h16a2,-2,90,0,0,2,-2v-4a-2,-2,90,0,0,-2,-2h-16a-2,2,90,0,0,-2,2" fill="rgb(129,59,236)" /><path d="M1,3v2a2,2,90,0,0,2,2h14a2,-2,90,0,0,2,-2v-2a-2,-2,90,0,0,-2,-2h-14a-2,2,90,0,0,-2,2" stroke="rgb(255,225,104)" fill="transparent" /></g>
+  <g width="20" height="8" id="flick"   ><path d="M0,2v4a2,2,90,0,0,2,2h16a2,-2,90,0,0,2,-2v-4a-2,-2,90,0,0,-2,-2h-16a-2,2,90,0,0,-2,2" fill="rgb(129,59,236)" /><path d="M1,3v2a2,2,90,0,0,2,2h14a2,-2,90,0,0,2,-2v-2a-2,-2,90,0,0,-2,-2h-14a-2,2,90,0,0,-2,2" stroke="rgb(255,225,104)" fill="transparent" /><path d="M5,4h10" stroke="rgb(255,225,104)" /></g>
+  <g width="20" height="12" id="scratch_arrow_left"><path d="M5,1l-4,6l4,6h3l-4,-6l4,-6zM11,1l-4,6l4,6h3l-4,-6l4,-6z" stroke="rgb(123,81,251)" fill="rgb(244,237,255)" /></g>
+  <g width="20" height="12" id="scratch_arrow_right"><path d="M9,1l4,6l-4,6h-3l4,-6l-4,-6zM15,1l4,6l-4,6h-3l4,-6l-4,-6z" stroke="rgb(123,81,251)" fill="rgb(244,237,255)" /></g>
+  <g width="20" height="12" id="scratch_arrow_both"><path d="M6,1l-4,6l4,6h3l-4,-6l4,-6zM14,1l4,6l-4,6h-3l4,-6l-4,-6z" stroke="rgb(123,81,251)" fill="rgb(244,237,255)" /></g>
+  <g width="20" height="20" id="sound"><path d="M10,1l3,7l7,3l-7,3l-3,7l-3,-7l-7,-3l7,-3l3,-7" stroke="rgb(56,173,198)" fill="rgb(147,243,252)" /></g>
+  <g width="20" height="20" id="sound_purple"><path d="M10,1l3,7l7,3l-7,3l-3,7l-3,-7l-7,-3l7,-3l3,-7" stroke="rgb(121,77,211)" fill="rgb(197,146,253)" /></g>
+  <g width="20" height="20" id="line_hold"><path d="M0,0h20v20h-20z" fill="url('#line_hold_gradient')" /></g>
+  <g width="20" height="20" id="line_scratch"><path d="M0,0h20v20h-20z" fill="url('#line_scratch_gradient')" /></g>
+  <g id="beat_section" width="160" height="160"><path d="M20,0v160M140,0v160M0,0" stroke="#CCCCCC" /><path d="M40,0v160M60,0v160M80,0v160M100,0v160M120,0v160M0,0" stroke="#444444" /></g>
+  <g id="beat_section_top" width="160" height="160"><path d="M20,0v160M140,0v160M0,0" stroke="#CCCCCC" /><path d="M20,0h120M40,0v160M60,0v160M80,0v160M100,0v160M120,0v160M0,0" stroke="#444444" /></g>
+  <g id="beat_section_bottom" width="160" height="160"><path d="M20,0v160M140,0v160M0,0" stroke="#CCCCCC" /><path d="M20,160h120M40,0v160M60,0v160M80,0v160M100,0v160M120,0v160M0,0" stroke="#444444" /></g>
+</defs>
+<g class="bg_layer">
+<use href="#beat_section_bottom" x="30" y="690.0" />
+<use href="#beat_section" x="30" y="530.0" />
+<use href="#beat_section" x="30" y="370.0" />
+<use href="#beat_section" x="30" y="210.0" />
+<use href="#beat_section_top" x="30" y="50.0" />
+<use href="#beat_section_bottom" x="230" y="690.0" />
+<use href="#beat_section" x="230" y="530.0" />
+<use href="#beat_section" x="230" y="370.0" />
+<use href="#beat_section" x="230" y="210.0" />
+<use href="#beat_section_top" x="230" y="50.0" />
+<use href="#beat_section_bottom" x="430" y="690.0" />
+<use href="#beat_section" x="430" y="530.0" />
+<use href="#beat_section" x="430" y="370.0" />
+<use href="#beat_section" x="430" y="210.0" />
+<use href="#beat_section_top" x="430" y="50.0" />
+<use href="#beat_section_bottom" x="630" y="690.0" />
+<use href="#beat_section" x="630" y="530.0" />
+<use href="#beat_section" x="630" y="370.0" />
+<use href="#beat_section" x="630" y="210.0" />
+<use href="#beat_section_top" x="630" y="50.0" />
+<use href="#beat_section_bottom" x="830" y="690.0" />
+<use href="#beat_section" x="830" y="530.0" />
+<use href="#beat_section" x="830" y="370.0" />
+<use href="#beat_section" x="830" y="210.0" />
+<use href="#beat_section_top" x="830" y="50.0" />
+<use href="#beat_section_bottom" x="1030" y="690.0" />
+<use href="#beat_section" x="1030" y="530.0" />
+<use href="#beat_section" x="1030" y="370.0" />
+<use href="#beat_section" x="1030" y="210.0" />
+<use href="#beat_section_top" x="1030" y="50.0" />
+<use href="#beat_section_bottom" x="1230" y="690.0" />
+<use href="#beat_section" x="1230" y="530.0" />
+<use href="#beat_section" x="1230" y="370.0" />
+<use href="#beat_section" x="1230" y="210.0" />
+<use href="#beat_section_top" x="1230" y="50.0" />
+<use href="#beat_section_bottom" x="1430" y="690.0" />
+<use href="#beat_section" x="1430" y="530.0" />
+<use href="#beat_section" x="1430" y="370.0" />
+<use href="#beat_section" x="1430" y="210.0" />
+<use href="#beat_section_top" x="1430" y="50.0" />
+<use href="#beat_section_bottom" x="1630" y="690.0" />
+<use href="#beat_section" x="1630" y="530.0" />
+<use href="#beat_section" x="1630" y="370.0" />
+<use href="#beat_section" x="1630" y="210.0" />
+<use href="#beat_section_top" x="1630" y="50.0" />
+<use href="#beat_section_bottom" x="1830" y="690.0" />
+<use href="#beat_section" x="1830" y="530.0" />
+<use href="#beat_section" x="1830" y="370.0" />
+<use href="#beat_section" x="1830" y="210.0" />
+<use href="#beat_section_top" x="1830" y="50.0" />
+<use href="#beat_section_bottom" x="2030" y="690.0" />
+<use href="#beat_section" x="2030" y="530.0" />
+<use href="#beat_section" x="2030" y="370.0" />
+<use href="#beat_section" x="2030" y="210.0" />
+<use href="#beat_section_top" x="2030" y="50.0" />
+<use href="#beat_section_bottom" x="2230" y="690.0" />
+<use href="#beat_section" x="2230" y="530.0" />
+<use href="#beat_section" x="2230" y="370.0" />
+<use href="#beat_section" x="2230" y="210.0" />
+<use href="#beat_section_top" x="2230" y="50.0" />
+<use href="#beat_section_bottom" x="2430" y="690.0" />
+<use href="#beat_section" x="2430" y="530.0" />
+<use href="#beat_section" x="2430" y="370.0" />
+<use href="#beat_section" x="2430" y="210.0" />
+<use href="#beat_section_top" x="2430" y="50.0" />
+<use href="#beat_section_bottom" x="2630" y="690.0" />
+<use href="#beat_section" x="2630" y="530.0" />
+<use href="#beat_section" x="2630" y="370.0" />
+<use href="#beat_section" x="2630" y="210.0" />
+<use href="#beat_section_top" x="2630" y="50.0" />
+<use href="#beat_section_bottom" x="2830" y="690.0" />
+<use href="#beat_section" x="2830" y="530.0" />
+<use href="#beat_section" x="2830" y="370.0" />
+<use href="#beat_section" x="2830" y="210.0" />
+<use href="#beat_section_top" x="2830" y="50.0" />
+<use href="#beat_section_bottom" x="3030" y="690.0" />
+<use href="#beat_section" x="3030" y="530.0" />
+<use href="#beat_section" x="3030" y="370.0" />
+<use href="#beat_section" x="3030" y="210.0" />
+<use href="#beat_section_top" x="3030" y="50.0" />
+<use href="#beat_section_bottom" x="3230" y="690.0" />
+<use href="#beat_section" x="3230" y="530.0" />
+<use href="#beat_section" x="3230" y="370.0" />
+<use href="#beat_section" x="3230" y="210.0" />
+<use href="#beat_section_top" x="3230" y="50.0" />
+<use href="#beat_section_bottom" x="3430" y="690.0" />
+<use href="#beat_section" x="3430" y="530.0" />
+<use href="#beat_section" x="3430" y="370.0" />
+<use href="#beat_section" x="3430" y="210.0" />
+<use href="#beat_section_top" x="3430" y="50.0" />
+<use href="#beat_section_top" x="3630" y="690.0" />
+</g>
+<g class="custom_line_layer">
+<path d="M50,850.000h120" stroke="red" />
+<path d="M50,773.000h120" stroke="#D7BF90" />
+<path d="M50,697.000h120" stroke="#D7BF90" />
+<path d="M50,621.000h120" stroke="#D7BF90" />
+<path d="M50,544.000h120" stroke="#D7BF90" />
+<path d="M50,468.000h120" stroke="#D7BF90" />
+<path d="M50,392.000h120" stroke="#D7BF90" />
+<path d="M50,316.000h120" stroke="#D7BF90" />
+<path d="M50,239.000h120" stroke="#D7BF90" />
+<path d="M50,163.000h120" stroke="#D7BF90" />
+<path d="M50,87.000h120" stroke="#D7BF90" />
+<path d="M250,811.000h120" stroke="#D7BF90" />
+<path d="M250,734.000h120" stroke="#D7BF90" />
+<path d="M250,658.000h120" stroke="#D7BF90" />
+<path d="M250,582.000h120" stroke="#D7BF90" />
+<path d="M250,506.000h120" stroke="#D7BF90" />
+<path d="M250,429.000h120" stroke="#D7BF90" />
+<path d="M250,353.000h120" stroke="#D7BF90" />
+<path d="M250,277.000h120" stroke="#D7BF90" />
+<path d="M250,201.000h120" stroke="#D7BF90" />
+<path d="M250,124.000h120" stroke="#D7BF90" />
+<path d="M450,848.000h120" stroke="#D7BF90" />
+<path d="M450,772.000h120" stroke="#D7BF90" />
+<path d="M450,696.000h120" stroke="#D7BF90" />
+<path d="M450,619.000h120" stroke="#D7BF90" />
+<path d="M450,543.000h120" stroke="#D7BF90" />
+<path d="M450,467.000h120" stroke="#D7BF90" />
+<path d="M450,391.000h120" stroke="#D7BF90" />
+<path d="M450,314.000h120" stroke="#D7BF90" />
+<path d="M450,238.000h120" stroke="#D7BF90" />
+<path d="M450,162.000h120" stroke="#D7BF90" />
+<path d="M450,86.000h120" stroke="#D7BF90" />
+<path d="M650,809.000h120" stroke="#D7BF90" />
+<path d="M650,733.000h120" stroke="#D7BF90" />
+<path d="M650,657.000h120" stroke="#D7BF90" />
+<path d="M650,581.000h120" stroke="#D7BF90" />
+<path d="M650,504.000h120" stroke="#D7BF90" />
+<path d="M650,428.000h120" stroke="#D7BF90" />
+<path d="M650,352.000h120" stroke="#D7BF90" />
+<path d="M650,276.000h120" stroke="#D7BF90" />
+<path d="M650,199.000h120" stroke="#D7BF90" />
+<path d="M650,123.000h120" stroke="#D7BF90" />
+<path d="M850,847.000h120" stroke="#D7BF90" />
+<path d="M850,771.000h120" stroke="#D7BF90" />
+<path d="M850,694.000h120" stroke="#D7BF90" />
+<path d="M850,618.000h120" stroke="#D7BF90" />
+<path d="M850,542.000h120" stroke="#D7BF90" />
+<path d="M850,466.000h120" stroke="#D7BF90" />
+<path d="M850,389.000h120" stroke="#D7BF90" />
+<path d="M850,313.000h120" stroke="#D7BF90" />
+<path d="M850,237.000h120" stroke="#D7BF90" />
+<path d="M850,161.000h120" stroke="#D7BF90" />
+<path d="M850,84.000h120" stroke="#D7BF90" />
+<path d="M1050,808.000h120" stroke="#D7BF90" />
+<path d="M1050,732.000h120" stroke="#D7BF90" />
+<path d="M1050,656.000h120" stroke="#D7BF90" />
+<path d="M1050,579.000h120" stroke="#D7BF90" />
+<path d="M1050,503.000h120" stroke="#D7BF90" />
+<path d="M1050,427.000h120" stroke="#D7BF90" />
+<path d="M1050,351.000h120" stroke="#D7BF90" />
+<path d="M1050,274.000h120" stroke="#D7BF90" />
+<path d="M1050,198.000h120" stroke="#D7BF90" />
+<path d="M1050,122.000h120" stroke="#D7BF90" />
+<path d="M1250,846.000h120" stroke="#D7BF90" />
+<path d="M1250,769.000h120" stroke="#D7BF90" />
+<path d="M1250,693.000h120" stroke="#D7BF90" />
+<path d="M1250,617.000h120" stroke="#D7BF90" />
+<path d="M1250,541.000h120" stroke="#D7BF90" />
+<path d="M1250,464.000h120" stroke="#D7BF90" />
+<path d="M1250,388.000h120" stroke="#D7BF90" />
+<path d="M1250,312.000h120" stroke="#D7BF90" />
+<path d="M1250,236.000h120" stroke="#D7BF90" />
+<path d="M1250,159.000h120" stroke="#D7BF90" />
+<path d="M1250,83.000h120" stroke="#D7BF90" />
+<path d="M1450,807.000h120" stroke="#D7BF90" />
+<path d="M1450,731.000h120" stroke="#D7BF90" />
+<path d="M1450,654.000h120" stroke="#D7BF90" />
+<path d="M1450,578.000h120" stroke="#D7BF90" />
+<path d="M1450,502.000h120" stroke="#D7BF90" />
+<path d="M1450,426.000h120" stroke="#D7BF90" />
+<path d="M1450,349.000h120" stroke="#D7BF90" />
+<path d="M1450,273.000h120" stroke="#D7BF90" />
+<path d="M1450,197.000h120" stroke="#D7BF90" />
+<path d="M1450,121.000h120" stroke="#D7BF90" />
+<path d="M1650,844.000h120" stroke="#D7BF90" />
+<path d="M1650,768.000h120" stroke="#D7BF90" />
+<path d="M1650,692.000h120" stroke="#D7BF90" />
+<path d="M1650,616.000h120" stroke="#D7BF90" />
+<path d="M1650,539.000h120" stroke="#D7BF90" />
+<path d="M1650,463.000h120" stroke="#D7BF90" />
+<path d="M1650,387.000h120" stroke="#D7BF90" />
+<path d="M1650,311.000h120" stroke="#D7BF90" />
+<path d="M1650,234.000h120" stroke="#D7BF90" />
+<path d="M1650,158.000h120" stroke="#D7BF90" />
+<path d="M1650,82.000h120" stroke="#D7BF90" />
+<path d="M1850,806.000h120" stroke="#D7BF90" />
+<path d="M1850,729.000h120" stroke="#D7BF90" />
+<path d="M1850,653.000h120" stroke="#D7BF90" />
+<path d="M1850,577.000h120" stroke="#D7BF90" />
+<path d="M1850,501.000h120" stroke="#D7BF90" />
+<path d="M1850,424.000h120" stroke="#D7BF90" />
+<path d="M1850,348.000h120" stroke="#D7BF90" />
+<path d="M1850,272.000h120" stroke="#D7BF90" />
+<path d="M1850,196.000h120" stroke="#D7BF90" />
+<path d="M1850,119.000h120" stroke="#D7BF90" />
+<path d="M2050,843.000h120" stroke="#D7BF90" />
+<path d="M2050,767.000h120" stroke="#D7BF90" />
+<path d="M2050,691.000h120" stroke="#D7BF90" />
+<path d="M2050,614.000h120" stroke="#D7BF90" />
+<path d="M2050,538.000h120" stroke="#D7BF90" />
+<path d="M2050,462.000h120" stroke="#D7BF90" />
+<path d="M2050,386.000h120" stroke="#D7BF90" />
+<path d="M2050,309.000h120" stroke="#D7BF90" />
+<path d="M2050,233.000h120" stroke="#D7BF90" />
+<path d="M2050,157.000h120" stroke="#D7BF90" />
+<path d="M2050,81.000h120" stroke="#D7BF90" />
+<path d="M2250,804.000h120" stroke="#D7BF90" />
+<path d="M2250,728.000h120" stroke="#D7BF90" />
+<path d="M2250,652.000h120" stroke="#D7BF90" />
+<path d="M2250,576.000h120" stroke="#D7BF90" />
+<path d="M2250,499.000h120" stroke="#D7BF90" />
+<path d="M2250,423.000h120" stroke="#D7BF90" />
+<path d="M2250,347.000h120" stroke="#D7BF90" />
+<path d="M2250,271.000h120" stroke="#D7BF90" />
+<path d="M2250,194.000h120" stroke="#D7BF90" />
+<path d="M2250,118.000h120" stroke="#D7BF90" />
+<path d="M2450,842.000h120" stroke="#D7BF90" />
+<path d="M2450,766.000h120" stroke="#D7BF90" />
+<path d="M2450,689.000h120" stroke="#D7BF90" />
+<path d="M2450,613.000h120" stroke="#D7BF90" />
+<path d="M2450,537.000h120" stroke="#D7BF90" />
+<path d="M2450,461.000h120" stroke="#D7BF90" />
+<path d="M2450,384.000h120" stroke="#D7BF90" />
+<path d="M2450,308.000h120" stroke="#D7BF90" />
+<path d="M2450,232.000h120" stroke="#D7BF90" />
+<path d="M2450,156.000h120" stroke="#D7BF90" />
+<path d="M2450,79.000h120" stroke="#D7BF90" />
+<path d="M2650,803.000h120" stroke="#D7BF90" />
+<path d="M2650,727.000h120" stroke="#D7BF90" />
+<path d="M2650,651.000h120" stroke="#D7BF90" />
+<path d="M2650,574.000h120" stroke="#D7BF90" />
+<path d="M2650,498.000h120" stroke="#D7BF90" />
+<path d="M2650,422.000h120" stroke="#D7BF90" />
+<path d="M2650,346.000h120" stroke="#D7BF90" />
+<path d="M2650,269.000h120" stroke="#D7BF90" />
+<path d="M2650,193.000h120" stroke="#D7BF90" />
+<path d="M2650,117.000h120" stroke="#D7BF90" />
+<path d="M2850,841.000h120" stroke="#D7BF90" />
+<path d="M2850,764.000h120" stroke="#D7BF90" />
+<path d="M2850,688.000h120" stroke="#D7BF90" />
+<path d="M2850,612.000h120" stroke="#D7BF90" />
+<path d="M2850,536.000h120" stroke="#D7BF90" />
+<path d="M2850,459.000h120" stroke="#D7BF90" />
+<path d="M2850,383.000h120" stroke="#D7BF90" />
+<path d="M2850,307.000h120" stroke="#D7BF90" />
+<path d="M2850,231.000h120" stroke="#D7BF90" />
+<path d="M2850,154.000h120" stroke="#D7BF90" />
+<path d="M2850,78.000h120" stroke="#D7BF90" />
+<path d="M3050,802.000h120" stroke="#D7BF90" />
+<path d="M3050,726.000h120" stroke="#D7BF90" />
+<path d="M3050,649.000h120" stroke="#D7BF90" />
+<path d="M3050,573.000h120" stroke="#D7BF90" />
+<path d="M3050,497.000h120" stroke="#D7BF90" />
+<path d="M3050,421.000h120" stroke="#D7BF90" />
+<path d="M3050,344.000h120" stroke="#D7BF90" />
+<path d="M3050,268.000h120" stroke="#D7BF90" />
+<path d="M3050,192.000h120" stroke="#D7BF90" />
+<path d="M3050,116.000h120" stroke="#D7BF90" />
+<path d="M3250,839.000h120" stroke="#D7BF90" />
+<path d="M3250,763.000h120" stroke="#D7BF90" />
+<path d="M3250,687.000h120" stroke="#D7BF90" />
+<path d="M3250,611.000h120" stroke="#D7BF90" />
+<path d="M3250,534.000h120" stroke="#D7BF90" />
+<path d="M3250,458.000h120" stroke="#D7BF90" />
+<path d="M3250,382.000h120" stroke="#D7BF90" />
+<path d="M3250,306.000h120" stroke="#D7BF90" />
+<path d="M3250,229.000h120" stroke="#D7BF90" />
+<path d="M3250,153.000h120" stroke="#D7BF90" />
+<path d="M3250,77.000h120" stroke="#D7BF90" />
+<path d="M3450,801.000h120" stroke="#D7BF90" />
+<path d="M3450,724.000h120" stroke="#D7BF90" />
+<path d="M3450,648.000h120" stroke="#D7BF90" />
+<path d="M3450,572.000h120" stroke="#D7BF90" />
+<path d="M3450,496.000h120" stroke="#D7BF90" />
+<path d="M3450,419.000h120" stroke="#D7BF90" />
+<path d="M42,850.000h8" stroke="#023eff" />
+<path d="M42,811.000h8" stroke="#023eff" />
+<path d="M42,773.000h8" stroke="#1ac938" />
+<path d="M42,735.000h8" stroke="#1ac938" />
+<path d="M42,697.000h8" stroke="#ff7c00" />
+<path d="M42,659.000h8" stroke="#8b2be2" />
+<path d="M42,621.000h8" stroke="#8b2be2" />
+<path d="M42,583.000h8" stroke="#f14cc1" />
+<path d="M42,544.000h8" stroke="#023eff" />
+<path d="M42,506.000h8" stroke="#023eff" />
+<path d="M42,468.000h8" stroke="#1ac938" />
+<path d="M42,430.000h8" stroke="#1ac938" />
+<path d="M42,392.000h8" stroke="#ff7c00" />
+<path d="M42,240.000h8" stroke="#ff7c00" />
+<path d="M42,201.000h8" stroke="#023eff" />
+<path d="M42,163.000h8" stroke="#1ac938" />
+<path d="M42,125.000h8" stroke="#1ac938" />
+<path d="M42,87.000h8" stroke="#ff7c00" />
+<path d="M242,849.000h8" stroke="#8b2be2" />
+<path d="M242,811.000h8" stroke="#8b2be2" />
+<path d="M242,773.000h8" stroke="#f14cc1" />
+<path d="M242,734.000h8" stroke="#ff7c00" />
+<path d="M242,696.000h8" stroke="#023eff" />
+<path d="M242,658.000h8" stroke="#1ac938" />
+<path d="M242,620.000h8" stroke="#1ac938" />
+<path d="M242,582.000h8" stroke="#ff7c00" />
+<path d="M242,429.000h8" stroke="#023eff" />
+<path d="M242,277.000h8" stroke="#ff7c00" />
+<path d="M242,124.000h8" stroke="#023eff" />
+<path d="M242,86.000h8" stroke="#023eff" />
+<path d="M442,848.000h8" stroke="#1ac938" />
+<path d="M442,810.000h8" stroke="#1ac938" />
+<path d="M442,772.000h8" stroke="#ff7c00" />
+<path d="M442,619.000h8" stroke="#ff7c00" />
+<path d="M442,467.000h8" stroke="#ff7c00" />
+<path d="M442,314.000h8" stroke="#ff7c00" />
+<path d="M442,276.000h8" stroke="#023eff" />
+<path d="M442,238.000h8" stroke="#1ac938" />
+<path d="M442,200.000h8" stroke="#1ac938" />
+<path d="M442,162.000h8" stroke="#ff7c00" />
+<path d="M642,809.000h8" stroke="#023eff" />
+<path d="M642,657.000h8" stroke="#ff7c00" />
+<path d="M642,504.000h8" stroke="#023eff" />
+<path d="M642,466.000h8" stroke="#023eff" />
+<path d="M642,428.000h8" stroke="#1ac938" />
+<path d="M642,390.000h8" stroke="#1ac938" />
+<path d="M642,352.000h8" stroke="#ff7c00" />
+<path d="M642,199.000h8" stroke="#ff7c00" />
+<path d="M842,847.000h8" stroke="#ff7c00" />
+<path d="M842,694.000h8" stroke="#ff7c00" />
+<path d="M842,656.000h8" stroke="#023eff" />
+<path d="M842,618.000h8" stroke="#1ac938" />
+<path d="M842,580.000h8" stroke="#1ac938" />
+<path d="M842,542.000h8" stroke="#ff7c00" />
+<path d="M842,389.000h8" stroke="#023eff" />
+<path d="M842,84.000h8" stroke="#023eff" />
+<path d="M1042,732.000h8" stroke="#ff7c00" />
+<path d="M1042,579.000h8" stroke="#ff7c00" />
+<path d="M1042,427.000h8" stroke="#ff7c00" />
+<path d="M1042,274.000h8" stroke="#ff7c00" />
+<path d="M1042,236.000h8" stroke="#023eff" />
+<path d="M1042,198.000h8" stroke="#1ac938" />
+<path d="M1042,160.000h8" stroke="#1ac938" />
+<path d="M1042,122.000h8" stroke="#ff7c00" />
+<path d="M1242,769.000h8" stroke="#023eff" />
+<path d="M1242,731.000h8" stroke="#023eff" />
+<path d="M1242,693.000h8" stroke="#1ac938" />
+<path d="M1242,655.000h8" stroke="#1ac938" />
+<path d="M1242,617.000h8" stroke="#ff7c00" />
+<path d="M1242,464.000h8" stroke="#023eff" />
+<path d="M1242,312.000h8" stroke="#ff7c00" />
+<path d="M1242,159.000h8" stroke="#ff7c00" />
+<path d="M1442,807.000h8" stroke="#ff7c00" />
+<path d="M1442,654.000h8" stroke="#ff7c00" />
+<path d="M1442,616.000h8" stroke="#023eff" />
+<path d="M1442,578.000h8" stroke="#1ac938" />
+<path d="M1442,540.000h8" stroke="#1ac938" />
+<path d="M1442,502.000h8" stroke="#ff7c00" />
+<path d="M1442,349.000h8" stroke="#023eff" />
+<path d="M1442,311.000h8" stroke="#023eff" />
+<path d="M1442,273.000h8" stroke="#1ac938" />
+<path d="M1442,235.000h8" stroke="#1ac938" />
+<path d="M1442,197.000h8" stroke="#ff7c00" />
+<path d="M1642,844.000h8" stroke="#023eff" />
+<path d="M1642,768.000h8" stroke="#1ac938" />
+<path d="M1642,692.000h8" stroke="#ff7c00" />
+<path d="M1642,539.000h8" stroke="#ff7c00" />
+<path d="M1642,463.000h8" stroke="#1ac938" />
+<path d="M1642,387.000h8" stroke="#ff7c00" />
+<path d="M1642,234.000h8" stroke="#ff7c00" />
+<path d="M1642,196.000h8" stroke="#023eff" />
+<path d="M1642,158.000h8" stroke="#1ac938" />
+<path d="M1642,120.000h8" stroke="#1ac938" />
+<path d="M1642,82.000h8" stroke="#ff7c00" />
+<path d="M1842,729.000h8" stroke="#023eff" />
+<path d="M1842,691.000h8" stroke="#023eff" />
+<path d="M1842,653.000h8" stroke="#1ac938" />
+<path d="M1842,615.000h8" stroke="#1ac938" />
+<path d="M1842,577.000h8" stroke="#ff7c00" />
+<path d="M1842,424.000h8" stroke="#023eff" />
+<path d="M1842,348.000h8" stroke="#1ac938" />
+<path d="M1842,272.000h8" stroke="#ff7c00" />
+<path d="M1842,119.000h8" stroke="#ff7c00" />
+<path d="M2042,843.000h8" stroke="#1ac938" />
+<path d="M2042,767.000h8" stroke="#ff7c00" />
+<path d="M2042,614.000h8" stroke="#ff7c00" />
+<path d="M2042,576.000h8" stroke="#023eff" />
+<path d="M2042,538.000h8" stroke="#1ac938" />
+<path d="M2042,500.000h8" stroke="#1ac938" />
+<path d="M2042,462.000h8" stroke="#ff7c00" />
+<path d="M2042,309.000h8" stroke="#023eff" />
+<path d="M2042,271.000h8" stroke="#023eff" />
+<path d="M2042,233.000h8" stroke="#1ac938" />
+<path d="M2042,195.000h8" stroke="#1ac938" />
+<path d="M2042,157.000h8" stroke="#ff7c00" />
+<path d="M2242,804.000h8" stroke="#023eff" />
+<path d="M2242,766.000h8" stroke="#023eff" />
+<path d="M2242,728.000h8" stroke="#1ac938" />
+<path d="M2242,690.000h8" stroke="#1ac938" />
+<path d="M2242,652.000h8" stroke="#ff7c00" />
+<path d="M2242,614.000h8" stroke="#8b2be2" />
+<path d="M2242,576.000h8" stroke="#8b2be2" />
+<path d="M2242,538.000h8" stroke="#f14cc1" />
+<path d="M2242,499.000h8" stroke="#ff7c00" />
+<path d="M2242,461.000h8" stroke="#023eff" />
+<path d="M2242,423.000h8" stroke="#1ac938" />
+<path d="M2242,385.000h8" stroke="#1ac938" />
+<path d="M2242,347.000h8" stroke="#ff7c00" />
+<path d="M2242,194.000h8" stroke="#ff7c00" />
+<path d="M2242,156.000h8" stroke="#023eff" />
+<path d="M2242,118.000h8" stroke="#1ac938" />
+<path d="M2242,80.000h8" stroke="#1ac938" />
+<path d="M2442,842.000h8" stroke="#ff7c00" />
+<path d="M2442,804.000h8" stroke="#8b2be2" />
+<path d="M2442,766.000h8" stroke="#8b2be2" />
+<path d="M2442,728.000h8" stroke="#f14cc1" />
+<path d="M2442,689.000h8" stroke="#023eff" />
+<path d="M2442,651.000h8" stroke="#023eff" />
+<path d="M2442,613.000h8" stroke="#1ac938" />
+<path d="M2442,575.000h8" stroke="#1ac938" />
+<path d="M2442,537.000h8" stroke="#ff7c00" />
+<path d="M2442,384.000h8" stroke="#023eff" />
+<path d="M2442,308.000h8" stroke="#1ac938" />
+<path d="M2442,232.000h8" stroke="#ff7c00" />
+<path d="M2442,79.000h8" stroke="#ff7c00" />
+<path d="M2642,803.000h8" stroke="#1ac938" />
+<path d="M2642,727.000h8" stroke="#ff7c00" />
+<path d="M2642,574.000h8" stroke="#ff7c00" />
+<path d="M2642,422.000h8" stroke="#ff7c00" />
+<path d="M2642,269.000h8" stroke="#023eff" />
+<path d="M2642,231.000h8" stroke="#023eff" />
+<path d="M2642,193.000h8" stroke="#1ac938" />
+<path d="M2642,155.000h8" stroke="#1ac938" />
+<path d="M2642,117.000h8" stroke="#ff7c00" />
+<path d="M2842,764.000h8" stroke="#023eff" />
+<path d="M2842,726.000h8" stroke="#023eff" />
+<path d="M2842,688.000h8" stroke="#1ac938" />
+<path d="M2842,650.000h8" stroke="#1ac938" />
+<path d="M2842,612.000h8" stroke="#ff7c00" />
+<path d="M2842,459.000h8" stroke="#ff7c00" />
+<path d="M2842,383.000h8" stroke="#1ac938" />
+<path d="M2842,307.000h8" stroke="#ff7c00" />
+<path d="M2842,154.000h8" stroke="#ff7c00" />
+<path d="M2842,78.000h8" stroke="#1ac938" />
+<path d="M3042,802.000h8" stroke="#ff7c00" />
+<path d="M3042,649.000h8" stroke="#023eff" />
+<path d="M3042,573.000h8" stroke="#1ac938" />
+<path d="M3042,497.000h8" stroke="#ff7c00" />
+<path d="M3042,344.000h8" stroke="#023eff" />
+<path d="M3042,306.000h8" stroke="#023eff" />
+<path d="M3042,268.000h8" stroke="#1ac938" />
+<path d="M3042,230.000h8" stroke="#1ac938" />
+<path d="M3042,192.000h8" stroke="#ff7c00" />
+<path d="M3242,839.000h8" stroke="#ff7c00" />
+<path d="M3242,763.000h8" stroke="#1ac938" />
+<path d="M3242,687.000h8" stroke="#ff7c00" />
+<path d="M3242,534.000h8" stroke="#ff7c00" />
+<path d="M3242,458.000h8" stroke="#1ac938" />
+<path d="M3242,382.000h8" stroke="#ff7c00" />
+<path d="M3242,229.000h8" stroke="#023eff" />
+<path d="M3242,153.000h8" stroke="#1ac938" />
+<path d="M3242,77.000h8" stroke="#ff7c00" />
+<path d="M3442,724.000h8" stroke="#023eff" />
+<path d="M3442,686.000h8" stroke="#023eff" />
+<path d="M3442,648.000h8" stroke="#1ac938" />
+<path d="M3442,610.000h8" stroke="#1ac938" />
+<path d="M3442,572.000h8" stroke="#ff7c00" />
+<path d="M3442,419.000h8" stroke="#ff7c00" />
+</g>
+<g class="sync_line_layer">
+<path d="M650,809h120" stroke="#606060" />
+<path d="M850,389h120" stroke="#606060" />
+<path d="M2850,459h120" stroke="#606060" />
+<path d="M3450,572h120" stroke="#606060" />
+<path d="M3450,259h120" stroke="#606060" />
+</g>
+<g class="line_layer">
+<use href="#line_hold" x="130.0" y="392.0" b1="0.0" b2="2.8594" style="transform:scaleX(2.0) scaleY(22.9);transform-origin:130.0px 392.0px" />
+<use href="#line_hold" x="50.0" y="50.0" b1="3.8125" b2="5" style="transform:scaleX(2.0) scaleY(9.5);transform-origin:50.0px 50.0px" />
+<use href="#line_hold" x="250.0" y="582.0" b1="5" b2="6.672" style="transform:scaleX(2.0) scaleY(13.4);transform-origin:250.0px 582.0px" />
+<use href="#line_hold" x="330.0" y="50.0" b1="9.5314" b2="10" style="transform:scaleX(2.0) scaleY(3.7);transform-origin:330.0px 50.0px" />
+<use href="#line_hold" x="530.0" y="772.0" b1="10" b2="10.4845" style="transform:scaleX(2.0) scaleY(3.9);transform-origin:530.0px 772.0px" />
+<use href="#line_hold" x="450.0" y="162.0" b1="13.3439" b2="14.2971" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:450.0px 162.0px" />
+<use href="#line_hold" x="710.0" y="352.0" b1="17.1565" b2="18.1096" style="transform:scaleX(3.0) scaleY(7.6);transform-origin:710.0px 352.0px" />
+<use href="#line_hold" x="850.0" y="542.0" b1="20.969" b2="21.9222" style="transform:scaleX(3.0) scaleY(7.6);transform-origin:850.0px 542.0px" />
+<use href="#line_hold" x="1050.0" y="122.0" b1="28.5941" b2="29.5473" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:1050.0px 122.0px" />
+<use href="#line_hold" x="1310.0" y="617.0" b1="30.5004" b2="31.4535" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:1310.0px 617.0px" />
+<use href="#line_hold" x="1470.0" y="502.0" b1="36.2192" b2="37.1724" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:1470.0px 502.0px" />
+<use href="#line_hold" x="1530.0" y="197.0" b1="38.1255" b2="39.0786" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:1530.0px 197.0px" />
+<use href="#line_hold" x="1650.0" y="82.0" b1="43.8443" b2="44.7975" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:1650.0px 82.0px" />
+<use href="#line_hold" x="1910.0" y="577.0" b1="45.7506" b2="46.7037" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:1910.0px 577.0px" />
+<use href="#line_hold" x="2070.0" y="462.0" b1="51.4694" b2="52.4226" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:2070.0px 462.0px" />
+<use href="#line_hold" x="2130.0" y="157.0" b1="53.3757" b2="54.3288" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:2130.0px 157.0px" />
+<use href="#line_hold" x="2270.0" y="347.0" b1="55.282" b2="58.1414" style="transform:scaleX(2.0) scaleY(22.85);transform-origin:2270.0px 347.0px" />
+<use href="#line_hold" x="2310.0" y="50.0" b1="59.0945" b2="60" style="transform:scaleX(2.0) scaleY(7.2);transform-origin:2310.0px 50.0px" />
+<use href="#line_hold" x="2510.0" y="537.0" b1="60" b2="61.9539" style="transform:scaleX(2.0) scaleY(15.65);transform-origin:2510.0px 537.0px" />
+<use href="#line_hold" x="2670.0" y="117.0" b1="68.6259" b2="69.579" style="transform:scaleX(2.0) scaleY(7.6);transform-origin:2670.0px 117.0px" />
+<use href="#line_hold" x="2910.0" y="612.0" b1="70.5322" b2="71.4853" style="transform:scaleX(1.5) scaleY(7.6);transform-origin:2910.0px 612.0px" />
+<use href="#line_hold" x="3140.0" y="192.0" b1="78.1573" b2="79.1104" style="transform:scaleX(1.5) scaleY(7.6);transform-origin:3140.0px 192.0px" />
+<use href="#line_hold" x="3510.0" y="572.0" b1="85.7824" b2="86.7355" style="transform:scaleX(1.5) scaleY(7.6);transform-origin:3510.0px 572.0px" />
+<use href="#sound" x="140.0" y="687.0" />
+<use href="#sound" x="140.0" y="534.0" />
+<use href="#sound" x="60.0" y="77.0" />
+<use href="#sound" x="260.0" y="724.0" />
+<use href="#sound" x="1660.0" y="148.0" />
+<use href="#sound" x="1920.0" y="643.0" />
+<use href="#sound" x="2080.0" y="528.0" />
+<use href="#sound" x="2280.0" y="642.0" />
+<use href="#sound" x="2280.0" y="489.0" />
+<use href="#sound" x="2520.0" y="832.0" />
+<use href="#sound" x="2520.0" y="679.0" />
+<use href="#sound" x="3145.0" y="258.0" />
+</g>
+<g class="note_layer">
+<use href="#hold" x="130.0" y="846.0" style="transform:scaleX(2.0);transform-origin:130.0px 846.0px" />
+<use href="#hold" x="130.0" y="388.0" style="transform:scaleX(2.0);transform-origin:130.0px 388.0px" />
+<use href="#hold" x="50.0" y="236.0" style="transform:scaleX(2.0);transform-origin:50.0px 236.0px" />
+<use href="#hold" x="250.0" y="578.0" style="transform:scaleX(2.0);transform-origin:250.0px 578.0px" />
+<use href="#normal" x="330.0" y="425.0" style="transform:scaleX(2.0);transform-origin:330.0px 425.0px" />
+<use href="#normal" x="270.0" y="273.0" style="transform:scaleX(2.0);transform-origin:270.0px 273.0px" />
+<use href="#hold" x="330.0" y="120.0" style="transform:scaleX(2.0);transform-origin:330.0px 120.0px" />
+<use href="#hold" x="530.0" y="768.0" style="transform:scaleX(2.0);transform-origin:530.0px 768.0px" />
+<use href="#normal" x="450.0" y="615.0" style="transform:scaleX(2.0);transform-origin:450.0px 615.0px" />
+<use href="#normal" x="510.0" y="463.0" style="transform:scaleX(2.0);transform-origin:510.0px 463.0px" />
+<use href="#hold" x="450.0" y="310.0" style="transform:scaleX(2.0);transform-origin:450.0px 310.0px" />
+<use href="#hold" x="450.0" y="158.0" style="transform:scaleX(2.0);transform-origin:450.0px 158.0px" />
+<use href="#normal" x="710.0" y="805.0" style="transform:scaleX(3.0);transform-origin:710.0px 805.0px" />
+<use href="#normal" x="650.0" y="653.0" style="transform:scaleX(3.0);transform-origin:650.0px 653.0px" />
+<use href="#hold" x="710.0" y="500.0" style="transform:scaleX(3.0);transform-origin:710.0px 500.0px" />
+<use href="#hold" x="710.0" y="348.0" style="transform:scaleX(3.0);transform-origin:710.0px 348.0px" />
+<use href="#normal" x="650.0" y="195.0" style="transform:scaleX(3.0);transform-origin:650.0px 195.0px" />
+<use href="#normal" x="910.0" y="843.0" style="transform:scaleX(3.0);transform-origin:910.0px 843.0px" />
+<use href="#normal" x="710.0" y="43.0" style="transform:scaleX(3.0);transform-origin:710.0px 43.0px" />
+<use href="#hold" x="850.0" y="690.0" style="transform:scaleX(3.0);transform-origin:850.0px 690.0px" />
+<use href="#hold" x="850.0" y="538.0" style="transform:scaleX(3.0);transform-origin:850.0px 538.0px" />
+<use href="#critical" x="910.0" y="385.0" style="transform:scaleX(3.0);transform-origin:910.0px 385.0px" />
+<use href="#normal" x="850.0" y="80.0" style="transform:scaleX(2.0);transform-origin:850.0px 80.0px" />
+<use href="#normal" x="1110.0" y="728.0" style="transform:scaleX(2.0);transform-origin:1110.0px 728.0px" />
+<use href="#normal" x="1070.0" y="575.0" style="transform:scaleX(2.0);transform-origin:1070.0px 575.0px" />
+<use href="#normal" x="1130.0" y="423.0" style="transform:scaleX(2.0);transform-origin:1130.0px 423.0px" />
+<use href="#hold" x="1050.0" y="270.0" style="transform:scaleX(2.0);transform-origin:1050.0px 270.0px" />
+<use href="#hold" x="1050.0" y="118.0" style="transform:scaleX(2.0);transform-origin:1050.0px 118.0px" />
+<use href="#hold" x="1310.0" y="765.0" style="transform:scaleX(2.0);transform-origin:1310.0px 765.0px" />
+<use href="#hold" x="1310.0" y="613.0" style="transform:scaleX(2.0);transform-origin:1310.0px 613.0px" />
+<use href="#normal" x="1270.0" y="460.0" style="transform:scaleX(2.0);transform-origin:1270.0px 460.0px" />
+<use href="#normal" x="1330.0" y="308.0" style="transform:scaleX(2.0);transform-origin:1330.0px 308.0px" />
+<use href="#normal" x="1250.0" y="155.0" style="transform:scaleX(2.0);transform-origin:1250.0px 155.0px" />
+<use href="#normal" x="1510.0" y="803.0" style="transform:scaleX(2.0);transform-origin:1510.0px 803.0px" />
+<use href="#hold" x="1470.0" y="650.0" style="transform:scaleX(2.0);transform-origin:1470.0px 650.0px" />
+<use href="#hold" x="1470.0" y="498.0" style="transform:scaleX(2.0);transform-origin:1470.0px 498.0px" />
+<use href="#critical" x="1530.0" y="345.0" style="transform:scaleX(2.0);transform-origin:1530.0px 345.0px" />
+<use href="#hold" x="1530.0" y="193.0" style="transform:scaleX(2.0);transform-origin:1530.0px 193.0px" />
+<use href="#normal" x="1650.0" y="840.0" style="transform:scaleX(2.0);transform-origin:1650.0px 840.0px" />
+<use href="#normal" x="1450.0" y="40.0" style="transform:scaleX(2.0);transform-origin:1450.0px 40.0px" />
+<use href="#normal" x="1710.0" y="764.0" style="transform:scaleX(2.0);transform-origin:1710.0px 764.0px" />
+<use href="#normal" x="1650.0" y="688.0" style="transform:scaleX(2.0);transform-origin:1650.0px 688.0px" />
+<use href="#normal" x="1730.0" y="535.0" style="transform:scaleX(2.0);transform-origin:1730.0px 535.0px" />
+<use href="#normal" x="1670.0" y="459.0" style="transform:scaleX(2.0);transform-origin:1670.0px 459.0px" />
+<use href="#normal" x="1730.0" y="383.0" style="transform:scaleX(2.0);transform-origin:1730.0px 383.0px" />
+<use href="#hold" x="1650.0" y="230.0" style="transform:scaleX(2.0);transform-origin:1650.0px 230.0px" />
+<use href="#hold" x="1650.0" y="78.0" style="transform:scaleX(2.0);transform-origin:1650.0px 78.0px" />
+<use href="#hold" x="1910.0" y="725.0" style="transform:scaleX(2.0);transform-origin:1910.0px 725.0px" />
+<use href="#hold" x="1910.0" y="573.0" style="transform:scaleX(2.0);transform-origin:1910.0px 573.0px" />
+<use href="#normal" x="1870.0" y="420.0" style="transform:scaleX(2.0);transform-origin:1870.0px 420.0px" />
+<use href="#normal" x="1930.0" y="344.0" style="transform:scaleX(2.0);transform-origin:1930.0px 344.0px" />
+<use href="#normal" x="1870.0" y="268.0" style="transform:scaleX(2.0);transform-origin:1870.0px 268.0px" />
+<use href="#normal" x="1910.0" y="115.0" style="transform:scaleX(2.0);transform-origin:1910.0px 115.0px" />
+<use href="#normal" x="2050.0" y="839.0" style="transform:scaleX(2.0);transform-origin:2050.0px 839.0px" />
+<use href="#normal" x="1850.0" y="39.0" style="transform:scaleX(2.0);transform-origin:1850.0px 39.0px" />
+<use href="#normal" x="2110.0" y="763.0" style="transform:scaleX(2.0);transform-origin:2110.0px 763.0px" />
+<use href="#hold" x="2070.0" y="610.0" style="transform:scaleX(2.0);transform-origin:2070.0px 610.0px" />
+<use href="#hold" x="2070.0" y="458.0" style="transform:scaleX(2.0);transform-origin:2070.0px 458.0px" />
+<use href="#critical" x="2130.0" y="305.0" style="transform:scaleX(2.0);transform-origin:2130.0px 305.0px" />
+<use href="#hold" x="2130.0" y="153.0" style="transform:scaleX(2.0);transform-origin:2130.0px 153.0px" />
+<use href="#hold" x="2270.0" y="800.0" style="transform:scaleX(2.0);transform-origin:2270.0px 800.0px" />
+<use href="#hold" x="2270.0" y="343.0" style="transform:scaleX(2.0);transform-origin:2270.0px 343.0px" />
+<use href="#hold" x="2310.0" y="190.0" style="transform:scaleX(2.0);transform-origin:2310.0px 190.0px" />
+<use href="#hold" x="2510.0" y="533.0" style="transform:scaleX(2.0);transform-origin:2510.0px 533.0px" />
+<use href="#normal" x="2470.0" y="380.0" style="transform:scaleX(2.0);transform-origin:2470.0px 380.0px" />
+<use href="#normal" x="2510.0" y="304.0" style="transform:scaleX(2.0);transform-origin:2510.0px 304.0px" />
+<use href="#normal" x="2450.0" y="228.0" style="transform:scaleX(2.0);transform-origin:2450.0px 228.0px" />
+<use href="#normal" x="2510.0" y="75.0" style="transform:scaleX(2.0);transform-origin:2510.0px 75.0px" />
+<use href="#normal" x="2670.0" y="799.0" style="transform:scaleX(2.0);transform-origin:2670.0px 799.0px" />
+<use href="#normal" x="2730.0" y="723.0" style="transform:scaleX(2.0);transform-origin:2730.0px 723.0px" />
+<use href="#critical" x="2650.0" y="570.0" style="transform:scaleX(3.0);transform-origin:2650.0px 570.0px" />
+<use href="#critical" x="2710.0" y="418.0" style="transform:scaleX(3.0);transform-origin:2710.0px 418.0px" />
+<use href="#hold" x="2670.0" y="265.0" style="transform:scaleX(2.0);transform-origin:2670.0px 265.0px" />
+<use href="#hold" x="2670.0" y="113.0" style="transform:scaleX(2.0);transform-origin:2670.0px 113.0px" />
+<use href="#hold" x="2910.0" y="760.0" style="transform:scaleX(1.5);transform-origin:2910.0px 760.0px" />
+<use href="#hold" x="2910.0" y="608.0" style="transform:scaleX(1.5);transform-origin:2910.0px 608.0px" />
+<use href="#critical" x="2850.0" y="455.0" style="transform:scaleX(1.5);transform-origin:2850.0px 455.0px" />
+<use href="#critical" x="2910.0" y="379.0" style="transform:scaleX(1.5);transform-origin:2910.0px 379.0px" />
+<use href="#critical" x="2850.0" y="303.0" style="transform:scaleX(1.5);transform-origin:2850.0px 303.0px" />
+<use href="#normal" x="2940.0" y="150.0" style="transform:scaleX(1.5);transform-origin:2940.0px 150.0px" />
+<use href="#normal" x="2880.0" y="74.0" style="transform:scaleX(1.5);transform-origin:2880.0px 74.0px" />
+<use href="#normal" x="3140.0" y="798.0" style="transform:scaleX(1.5);transform-origin:3140.0px 798.0px" />
+<use href="#normal" x="3050.0" y="645.0" style="transform:scaleX(1.5);transform-origin:3050.0px 645.0px" />
+<use href="#normal" x="3110.0" y="569.0" style="transform:scaleX(1.5);transform-origin:3110.0px 569.0px" />
+<use href="#normal" x="3050.0" y="493.0" style="transform:scaleX(1.5);transform-origin:3050.0px 493.0px" />
+<use href="#critical" x="3140.0" y="340.0" style="transform:scaleX(1.5);transform-origin:3140.0px 340.0px" />
+<use href="#hold" x="3140.0" y="188.0" style="transform:scaleX(1.5);transform-origin:3140.0px 188.0px" />
+<use href="#critical" x="3280.0" y="835.0" style="transform:scaleX(1.5);transform-origin:3280.0px 835.0px" />
+<use href="#critical" x="3340.0" y="759.0" style="transform:scaleX(1.5);transform-origin:3340.0px 759.0px" />
+<use href="#critical" x="3280.0" y="683.0" style="transform:scaleX(1.5);transform-origin:3280.0px 683.0px" />
+<use href="#normal" x="3310.0" y="530.0" style="transform:scaleX(1.5);transform-origin:3310.0px 530.0px" />
+<use href="#normal" x="3250.0" y="454.0" style="transform:scaleX(1.5);transform-origin:3250.0px 454.0px" />
+<use href="#normal" x="3310.0" y="378.0" style="transform:scaleX(1.5);transform-origin:3310.0px 378.0px" />
+<use href="#normal" x="3280.0" y="225.0" style="transform:scaleX(1.5);transform-origin:3280.0px 225.0px" />
+<use href="#normal" x="3340.0" y="149.0" style="transform:scaleX(1.5);transform-origin:3340.0px 149.0px" />
+<use href="#normal" x="3280.0" y="73.0" style="transform:scaleX(1.5);transform-origin:3280.0px 73.0px" />
+<use href="#critical" x="3510.0" y="720.0" style="transform:scaleX(1.5);transform-origin:3510.0px 720.0px" />
+<use href="#hold" x="3510.0" y="568.0" style="transform:scaleX(1.5);transform-origin:3510.0px 568.0px" />
+<use href="#critical" x="3450.0" y="415.0" style="transform:scaleX(3.0);transform-origin:3450.0px 415.0px" />
+</g>
+<g class="arrow_layer">
+</g>
+<g class="split_layer">
+<path d="M3448.5,259.0v160.0h3v-160.0z" fill="url(#split_fadeout_0)" />
+<path d="M3568.5,259.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M3450,850 V732" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3480.0,850 V732" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3510.0,850 V732" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3540.0,850 V732" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3570.0,850 V732" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M2848.5,459.0v160.0h3v-160.0z" fill="url(#split_fadein_0)" />
+<path d="M2878.5,459.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" />
+<path d="M2908.5,459.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" />
+<path d="M2938.5,459.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" />
+<path d="M2968.5,459.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" />
+<path d="M3448.5,572.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M3478.5,572.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M3508.5,572.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M3538.5,572.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M3568.5,572.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M3250,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3280.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3310.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3340.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3370.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3050,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3080.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3110.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3140.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M3170.0,850 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M2850,459 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M2880.0,459 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M2910.0,459 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M2940.0,459 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M2970.0,459 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M850,850 V549" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M910.0,850 V549" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M970.0,850 V549" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M448.5,9.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" clip-path="url(#split_fadeout_clip)" />
+<path d="M648.5,809.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" clip-path="url(#split_fadeout_clip)" />
+<path d="M508.5,9.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" clip-path="url(#split_fadeout_clip)" />
+<path d="M708.5,809.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" clip-path="url(#split_fadeout_clip)" />
+<path d="M568.5,9.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" clip-path="url(#split_fadeout_clip)" />
+<path d="M768.5,809.0v160.0h3v-160.0z" fill="url(#split_fadein_1)" clip-path="url(#split_fadeout_clip)" />
+<path d="M848.5,389.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M908.5,389.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M968.5,389.0v160.0h3v-160.0z" fill="url(#split_fadeout_1)" />
+<path d="M650,809 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M710.0,809 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<path d="M770.0,809 V50" stroke="rgba(100%,100%,100%,50.0%)" stroke-width="3" />
+<defs>
+<linearGradient id="split_fadein_id" x2="0" y1="100%" y2="0">color</linearGradient>
+<linearGradient id="split_fadeout_id" x2="0" y2="100%">color</linearGradient>
+<clipPath id="split_fadeout_clip"><rect x="50" y="50" width="3500" height="800" /></clipPath>
+</defs>
+</g>
+<g class="text_mark_layer">
+<text class="second_mark" x="175" y="850.0">seconds</text>
+<text class="second_mark" x="175" y="690.0">1</text>
+<text class="second_mark" x="175" y="530.0">2</text>
+<text class="second_mark" x="175" y="370.0">3</text>
+<text class="second_mark" x="175" y="210.0">4</text>
+<text class="second_mark" x="375" y="850.0">5</text>
+<text class="second_mark" x="375" y="690.0">6</text>
+<text class="second_mark" x="375" y="530.0">7</text>
+<text class="second_mark" x="375" y="370.0">8</text>
+<text class="second_mark" x="375" y="210.0">9</text>
+<text class="second_mark" x="575" y="850.0">10</text>
+<text class="second_mark" x="575" y="690.0">11</text>
+<text class="second_mark" x="575" y="530.0">12</text>
+<text class="second_mark" x="575" y="370.0">13</text>
+<text class="second_mark" x="575" y="210.0">14</text>
+<text class="second_mark" x="775" y="850.0">15</text>
+<text class="second_mark" x="775" y="690.0">16</text>
+<text class="second_mark" x="775" y="530.0">17</text>
+<text class="second_mark" x="775" y="370.0">18</text>
+<text class="second_mark" x="775" y="210.0">19</text>
+<text class="second_mark" x="975" y="850.0">20</text>
+<text class="second_mark" x="975" y="690.0">21</text>
+<text class="second_mark" x="975" y="530.0">22</text>
+<text class="second_mark" x="975" y="370.0">23</text>
+<text class="second_mark" x="975" y="210.0">24</text>
+<text class="second_mark" x="1175" y="850.0">25</text>
+<text class="second_mark" x="1175" y="690.0">26</text>
+<text class="second_mark" x="1175" y="530.0">27</text>
+<text class="second_mark" x="1175" y="370.0">28</text>
+<text class="second_mark" x="1175" y="210.0">29</text>
+<text class="second_mark" x="1375" y="850.0">30</text>
+<text class="second_mark" x="1375" y="690.0">31</text>
+<text class="second_mark" x="1375" y="530.0">32</text>
+<text class="second_mark" x="1375" y="370.0">33</text>
+<text class="second_mark" x="1375" y="210.0">34</text>
+<text class="second_mark" x="1575" y="850.0">35</text>
+<text class="second_mark" x="1575" y="690.0">36</text>
+<text class="second_mark" x="1575" y="530.0">37</text>
+<text class="second_mark" x="1575" y="370.0">38</text>
+<text class="second_mark" x="1575" y="210.0">39</text>
+<text class="second_mark" x="1775" y="850.0">40</text>
+<text class="second_mark" x="1775" y="690.0">41</text>
+<text class="second_mark" x="1775" y="530.0">42</text>
+<text class="second_mark" x="1775" y="370.0">43</text>
+<text class="second_mark" x="1775" y="210.0">44</text>
+<text class="second_mark" x="1975" y="850.0">45</text>
+<text class="second_mark" x="1975" y="690.0">46</text>
+<text class="second_mark" x="1975" y="530.0">47</text>
+<text class="second_mark" x="1975" y="370.0">48</text>
+<text class="second_mark" x="1975" y="210.0">49</text>
+<text class="second_mark" x="2175" y="850.0">50</text>
+<text class="second_mark" x="2175" y="690.0">51</text>
+<text class="second_mark" x="2175" y="530.0">52</text>
+<text class="second_mark" x="2175" y="370.0">53</text>
+<text class="second_mark" x="2175" y="210.0">54</text>
+<text class="second_mark" x="2375" y="850.0">55</text>
+<text class="second_mark" x="2375" y="690.0">56</text>
+<text class="second_mark" x="2375" y="530.0">57</text>
+<text class="second_mark" x="2375" y="370.0">58</text>
+<text class="second_mark" x="2375" y="210.0">59</text>
+<text class="second_mark" x="2575" y="850.0">60</text>
+<text class="second_mark" x="2575" y="690.0">61</text>
+<text class="second_mark" x="2575" y="530.0">62</text>
+<text class="second_mark" x="2575" y="370.0">63</text>
+<text class="second_mark" x="2575" y="210.0">64</text>
+<text class="second_mark" x="2775" y="850.0">65</text>
+<text class="second_mark" x="2775" y="690.0">66</text>
+<text class="second_mark" x="2775" y="530.0">67</text>
+<text class="second_mark" x="2775" y="370.0">68</text>
+<text class="second_mark" x="2775" y="210.0">69</text>
+<text class="second_mark" x="2975" y="850.0">70</text>
+<text class="second_mark" x="2975" y="690.0">71</text>
+<text class="second_mark" x="2975" y="530.0">72</text>
+<text class="second_mark" x="2975" y="370.0">73</text>
+<text class="second_mark" x="2975" y="210.0">74</text>
+<text class="second_mark" x="3175" y="850.0">75</text>
+<text class="second_mark" x="3175" y="690.0">76</text>
+<text class="second_mark" x="3175" y="530.0">77</text>
+<text class="second_mark" x="3175" y="370.0">78</text>
+<text class="second_mark" x="3175" y="210.0">79</text>
+<text class="second_mark" x="3375" y="850.0">80</text>
+<text class="second_mark" x="3375" y="690.0">81</text>
+<text class="second_mark" x="3375" y="530.0">82</text>
+<text class="second_mark" x="3375" y="370.0">83</text>
+<text class="second_mark" x="3375" y="210.0">84</text>
+<text class="second_mark" x="3575" y="850.0">85</text>
+<text class="second_mark" x="3575" y="690.0">86</text>
+<text class="second_mark" x="3575" y="530.0">87</text>
+<text class="second_mark" x="3575" y="370.0">88</text>
+<text class="second_mark" x="3575" y="210.0">89</text>
+<text class="second_mark" x="3775" y="850.0">90</text>
+<text class="split_mark" text-anchor="end" x="30" y="830" style="fill:#fee300">BPM:</text>
+<text class="split_mark" text-anchor="end" x="30" y="840" style="fill:#fee300">125.9</text>
+<text class="split_mark" text-anchor="end" x="40" y="853" style="fill:#023eff">0</text>
+<text class="split_mark" text-anchor="end" x="40" y="814" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="776" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="738" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="700" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="662" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="624" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="586" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="547" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="509" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="471" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="433" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="395" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="243" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="40" y="204" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="166" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="128" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="40" y="90" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="852" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="814" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="776" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="737" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="699" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="661" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="623" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="585" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="240" y="432" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="240" y="280" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="240" y="127" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="240" y="89" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="851" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="813" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="775" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="622" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="440" y="470" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="440" y="317" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="440" y="279" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="241" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="203" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="440" y="165" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="640" y="812" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="640" y="660" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="640" y="507" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="640" y="469" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="640" y="431" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="640" y="393" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="640" y="355" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="640" y="202" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="840" y="850" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="840" y="697" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="840" y="659" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="840" y="621" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="840" y="583" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="840" y="545" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="840" y="392" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="840" y="87" style="fill:#023eff">1/1</text>
+<text class="split_mark" text-anchor="end" x="1040" y="735" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1040" y="582" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1040" y="430" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1040" y="277" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1040" y="239" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1040" y="201" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1040" y="163" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1040" y="125" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1240" y="772" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1240" y="734" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1240" y="696" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1240" y="658" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1240" y="620" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1240" y="467" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1240" y="315" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1240" y="162" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1440" y="810" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1440" y="657" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1440" y="619" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="581" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="543" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="505" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="352" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1440" y="314" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="276" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="238" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1440" y="200" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1640" y="847" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1640" y="771" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="1640" y="695" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="1640" y="542" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1640" y="466" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="1640" y="390" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="1640" y="237" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1640" y="199" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1640" y="161" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1640" y="123" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1640" y="85" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1840" y="732" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1840" y="694" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1840" y="656" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1840" y="618" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1840" y="580" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="1840" y="427" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="1840" y="351" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="1840" y="275" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="1840" y="122" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2040" y="846" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2040" y="770" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2040" y="617" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2040" y="579" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="541" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="503" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="465" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="312" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2040" y="274" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="236" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="198" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2040" y="160" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="807" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2240" y="769" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="731" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="693" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="655" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="617" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="579" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="541" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="502" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="464" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="426" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="388" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="350" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="197" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2240" y="159" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="121" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2240" y="83" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="845" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="807" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="769" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="731" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="692" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="654" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="616" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="578" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="540" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2440" y="387" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2440" y="311" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2440" y="235" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2440" y="82" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2640" y="806" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2640" y="730" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2640" y="577" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2640" y="425" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2640" y="272" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2640" y="234" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2640" y="196" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2640" y="158" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2640" y="120" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2840" y="767" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2840" y="729" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2840" y="691" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2840" y="653" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2840" y="615" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="2840" y="462" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2840" y="386" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2840" y="310" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="2840" y="157" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="2840" y="81" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3040" y="805" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3040" y="652" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="3040" y="576" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3040" y="500" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3040" y="347" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="3040" y="309" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3040" y="271" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3040" y="233" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3040" y="195" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3240" y="842" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="3240" y="766" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3240" y="690" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3240" y="537" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="3240" y="461" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3240" y="385" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3240" y="232" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="3240" y="156" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3240" y="80" style="fill:#1ac938">1/4</text>
+<text class="split_mark" text-anchor="end" x="3440" y="727" style="fill:#ff7c00">1/2</text>
+<text class="split_mark" text-anchor="end" x="3440" y="689" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3440" y="651" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3440" y="613" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3440" y="575" style="fill:#8b2be2">1/8</text>
+<text class="split_mark" text-anchor="end" x="3440" y="422" style="fill:#ff7c00">1/2</text>
+</g>
+</svg>
